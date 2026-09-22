@@ -1,86 +1,178 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ポートフォリオ</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shinya Saito — Portfolio</title>
+<meta name="description" content="Shinya Saito のポートフォリオ。バックエンド・インフラ・音声 AI を主戦場とするエンジニア。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-    <div class="container">
-        <h1>chocopun.page created by GPT-4o</h1>
-        <nav>
-            <ul>
-                <li><a href="#skills">スキル</a></li>
-            </ul>
-        </nav>
-    </div>
+
+<header class="masthead">
+  <div class="shell">
+    <p class="tag">Backend &middot; Infrastructure &middot; Voice AI</p>
+    <h1 class="wordmark">Shinya Saito</h1>
+    <p class="lede">電話応対の自動化、対話シナリオの運用基盤、サイトの自動運用。<br>実際に動き続ける仕組みを、設計から運用まで一人で回せることを強みにしています。</p>
+    <dl class="ident">
+      <div><dt>専門</dt><dd>バックエンド / インフラ / 音声 AI</dd></div>
+      <div><dt>主な言語</dt><dd>Python, TypeScript, Go, Kotlin</dd></div>
+      <div><dt>クラウド</dt><dd>AWS, GCP, Azure, Cloudflare</dd></div>
+    </dl>
+    <nav class="jump">
+      <a href="#projects">プロジェクト</a>
+      <a href="#skills">スキル</a>
+    </nav>
+  </div>
+  <div class="scale" aria-hidden="true"></div>
 </header>
 
-<section id="skills" class="container">
-    <h2>スキル</h2>
+<div class="waveform" aria-hidden="true">
+  <svg viewBox="0 0 1200 40" preserveAspectRatio="none" role="presentation" focusable="false">
+    <path d="M0 20 H120 l10-9 8 18 9-24 8 30 10-16 7 9 9-13 8 17 10-21 9 26 8-12 10 6 9-8 8 11 10-15 9 19 8-9 10 4 9-6 8 8 10-11 9 14 8-7 10 3 9-5 8 6 10-8 9 10 8-5 10 2 9-3 8 4 10-6 9 7 8-4 10 2 H1200" />
+  </svg>
+</div>
 
-    <div class="skills-section">
-        <h3>フロントエンド:</h3>
-        <p>React (Next.js, Remix), Vue (Nuxt.js), AngularJS, NestJS</p>
+<main class="shell">
+
+  <section id="projects" class="block">
+    <div class="block-head">
+      <h2>プロジェクト</h2>
+      <p class="block-note">継続して運用している主要なもの。顧客名と製品名は伏せています。</p>
     </div>
 
-    <div class="skills-section">
-        <h3>プログラミング言語:</h3>
-        <p>Go, Java, Kotlin, PHP, Python, Node.js, TypeScript</p>
+    <article class="entry">
+      <div class="entry-main">
+        <p class="kind kind-work">業務</p>
+        <h3>音声 AI エージェント基盤</h3>
+        <p>電話応対を自動化する音声対話システム。リアルタイムの音声認識・応答生成・音声合成をつなぎ、通話制御から後処理までを一貫して扱います。複数テナントでの運用を前提に設計しました。</p>
+      </div>
+      <dl class="spec">
+        <div><dt>言語 / FW</dt><dd>Python, FastAPI</dd></div>
+        <div><dt>AI</dt><dd>Azure OpenAI Service (Realtime API), Whisper, Azure AI Speech</dd></div>
+        <div><dt>基盤</dt><dd>Azure Communication Services, PostgreSQL, Redis</dd></div>
+        <div><dt>可観測性</dt><dd>OpenTelemetry, structlog</dd></div>
+      </dl>
+    </article>
+
+    <article class="entry">
+      <div class="entry-main">
+        <p class="kind kind-work">業務</p>
+        <h3>対話シナリオの Code-First 運用基盤</h3>
+        <p>プロンプト・Function 定義・Q&amp;A といった対話シナリオを Git で一元管理し、レビューを経て配信する仕組み。専用 CLI と検証の自動化により、非エンジニアの編集も安全に反映できるようにしました。</p>
+      </div>
+      <dl class="spec">
+        <div><dt>言語 / FW</dt><dd>Python, Typer</dd></div>
+        <div><dt>検証</dt><dd>JSON Schema, pytest</dd></div>
+        <div><dt>配信</dt><dd>Docker, GitHub Actions</dd></div>
+      </dl>
+    </article>
+
+    <article class="entry">
+      <div class="entry-main">
+        <p class="kind kind-work">業務</p>
+        <h3>通話ログの分析基盤</h3>
+        <p>通話データを日次でデータウェアハウスへ集約し、指標をモデリングして可視化するパイプライン。品質チェックと異常時のアラートまでを含みます。</p>
+      </div>
+      <dl class="spec">
+        <div><dt>DWH</dt><dd>ClickHouse, BigQuery</dd></div>
+        <div><dt>変換 / 可視化</dt><dd>dbt, Metabase</dd></div>
+        <div><dt>実行基盤</dt><dd>Kubernetes, GitHub Actions</dd></div>
+      </dl>
+    </article>
+
+    <article class="entry">
+      <div class="entry-main">
+        <p class="kind kind-personal">個人</p>
+        <h3>サイト自動運用基盤</h3>
+        <p>商品カタログの収集から記事の自動生成・投稿、価格追跡までを自動化した個人開発の基盤。エッジ環境で動く複数のサイトとバッチ処理を、単一のデータベースで運用しています。</p>
+      </div>
+      <dl class="spec">
+        <div><dt>言語 / FW</dt><dd>TypeScript, Next.js (OpenNext)</dd></div>
+        <div><dt>実行基盤</dt><dd>Cloudflare Workers / R2 / Queues</dd></div>
+        <div><dt>データ</dt><dd>Supabase (PostgreSQL)</dd></div>
+        <div><dt>連携</dt><dd>WordPress REST API</dd></div>
+      </dl>
+    </article>
+
+    <article class="entry">
+      <div class="entry-main">
+        <p class="kind kind-personal">個人</p>
+        <h3>音声合成・ボイスチャット</h3>
+        <p>音声合成モデルを用いた読み上げと、リアルタイム音声のやり取りを試作。推論の高速化と遅延の削減を中心に検証しました。</p>
+      </div>
+      <dl class="spec">
+        <div><dt>推論</dt><dd>Python, PyTorch, Style-Bert-VITS2</dd></div>
+        <div><dt>配信</dt><dd>WebSocket, Next.js</dd></div>
+      </dl>
+    </article>
+  </section>
+
+  <section id="skills" class="block">
+    <div class="block-head">
+      <h2>スキル</h2>
+      <p class="block-note">実務で設計・実装・運用まで扱ったもの。</p>
     </div>
 
-    <div class="skills-section">
-        <h3>バックエンド:</h3>
-        <p>FastAPI, Spring Boot, SQLAlchemy</p>
-    </div>
+    <dl class="sheet">
+      <div class="sheet-row">
+        <dt>フロントエンド</dt>
+        <dd>React (Next.js, Remix), Vue (Nuxt.js), AngularJS, NestJS</dd>
+      </div>
+      <div class="sheet-row">
+        <dt>プログラミング言語</dt>
+        <dd>Go, Java, Kotlin, PHP, Python, Node.js, TypeScript</dd>
+      </div>
+      <div class="sheet-row">
+        <dt>バックエンド</dt>
+        <dd>FastAPI, Spring Boot, SQLAlchemy</dd>
+      </div>
+      <div class="sheet-row">
+        <dt>データベース</dt>
+        <dd>Redis, Memcached, MySQL, PostgreSQL, ClickHouse</dd>
+      </div>
+      <div class="sheet-row">
+        <dt>コンテナ / オーケストレーション</dt>
+        <dd>Docker, Kubernetes, Terraform, Helm</dd>
+      </div>
+      <div class="sheet-row">
+        <dt>監視とログ</dt>
+        <dd>Datadog, Nginx, Fluentd, Prometheus, Grafana, OpenTelemetry</dd>
+      </div>
+      <div class="sheet-row">
+        <dt>AI / LLM</dt>
+        <dd>OpenAI (Realtime API, Whisper), Azure OpenAI Service, Anthropic Claude, Gemini, LangChain, pgvector</dd>
+      </div>
+      <div class="sheet-row">
+        <dt>データ基盤</dt>
+        <dd>dbt, BigQuery, ClickHouse, Metabase</dd>
+      </div>
+      <div class="sheet-row">
+        <dt>AWS</dt>
+        <dd>Lambda, EC2, ECS, Elastic Beanstalk, AppRunner, Batch, StepFunctions, ECR, EKS, S3, RDS, ElastiCache, DynamoDB, VPC, API Gateway, CodeDeploy, CodePipeline, CloudWatch, CloudFormation, SSM, Bedrock, SageMaker, Rekognition, Textract, Transcribe, Athena, Kinesis, Glue</dd>
+      </div>
+      <div class="sheet-row">
+        <dt>Azure</dt>
+        <dd>Azure OpenAI Service, AI Speech, AI Search, Cosmos DB, Blob Storage, Communication Services, Entra ID, Azure Monitor</dd>
+      </div>
+      <div class="sheet-row">
+        <dt>GCP</dt>
+        <dd>GCE, GAE, Cloud Run, GKE, Cloud Functions, Vertex AI, Vision, Speech-to-Text, AutoML, Cloud Pub/Sub, Anthos, GCS, Cloud SQL, Memorystore, Spanner, BigQuery, Dataprep, Cloud Deploy, Cloud Build, Cloud Scheduler, Source Repository, GCR, Stackdriver, Monitoring, Trace, Firebase, Firestore, Firebase Authentication</dd>
+      </div>
+    </dl>
+  </section>
 
-    <div class="skills-section">
-        <h3>データベース:</h3>
-        <p>Redis, Memcached, MySQL, PostgreSQL, ClickHouse</p>
-    </div>
+</main>
 
-    <div class="skills-section">
-        <h3>コンテナとオーケストレーション:</h3>
-        <p>Docker, Kubernetes, Terraform, Helm</p>
-    </div>
-
-    <div class="skills-section">
-        <h3>監視とログ:</h3>
-        <p>Datadog, Nginx, Fluentd, Prometheus, Grafana, OpenTelemetry</p>
-    </div>
-
-    <div class="skills-section">
-        <h3>AI / LLM:</h3>
-        <p>OpenAI (Realtime API, Whisper), Azure OpenAI Service, Anthropic Claude, Gemini, LangChain, pgvector</p>
-    </div>
-
-    <div class="skills-section">
-        <h3>データ基盤:</h3>
-        <p>dbt, BigQuery, ClickHouse, Metabase</p>
-    </div>
-
-    <div class="skills-section">
-        <h3>AWS:</h3>
-        <p>Lambda, EC2, ECS, Elastic Beanstalk, AppRunner, Batch, StepFunctions, ECR, EKS, S3, RDS, ElastiCache, DynamoDB, VPC, API Gateway, CodeDeploy, CodePipeline, CloudWatch, CloudFormation, SSM, Bedrock, SageMaker, Rekognition, Textract, Transcribe, Athena, Kinesis, Glue</p>
-    </div>
-
-    <div class="skills-section">
-        <h3>Azure:</h3>
-        <p>Azure OpenAI Service, AI Speech, AI Search, Cosmos DB, Blob Storage, Communication Services, Entra ID, Azure Monitor</p>
-    </div>
-
-    <div class="skills-section">
-        <h3>GCP:</h3>
-        <p>GCE, GAE, Cloud Run, GKE, Cloud Functions, Vertex AI, Vision, Speech-to-Text, AutoML, Cloud Pub/Sub, Anthos, GCS, Cloud SQL, Memorystore, Spanner, BigQuery, Dataprep, Cloud Deploy, Cloud Build, Cloud Scheduler, Source Repository, GCR, Stackdriver, Monitoring, Trace, Firebase, Firestore, Firebase Authentication</p>
-    </div>
-</section>
-
-<footer>
-    <div class="container">
-        <p>&copy; 2024 chocopun</p>
-    </div>
+<footer class="foot">
+  <div class="shell foot-inner">
+    <p class="foot-mark">Shinya Saito</p>
+    <p class="foot-note">&copy; 2026 Shinya Saito</p>
+  </div>
 </footer>
+
 </body>
 </html>

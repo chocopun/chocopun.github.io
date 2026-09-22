@@ -1,74 +1,400 @@
+/* chocopun portfolio — 計器のスペックシートを下敷きにした構成
+   罫線・目盛り・等幅の指標で情報を並べ、差し色は信号レッド一色に絞る */
+
+:root {
+  --paper: #eceae5;
+  --panel: #f6f5f2;
+  --panel-2: #e3e1db;
+  --rule: #cfccc4;
+  --rule-soft: #ddd9d1;
+  --ink: #161513;
+  --ink-2: #4b4842;
+  --ink-3: #78746b;
+  --signal: #b3372c;
+  --signal-ink: #ffffff;
+  --shadow: 0 1px 0 rgba(22, 21, 19, .04);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #14151a;
+    --panel: #1b1d23;
+    --panel-2: #23262e;
+    --rule: #32363f;
+    --rule-soft: #272a32;
+    --ink: #e8e6e1;
+    --ink-2: #b0aca4;
+    --ink-3: #7e7a72;
+    --signal: #e06a5c;
+    --signal-ink: #14151a;
+    --shadow: none;
+  }
+}
+
+:root[data-theme="dark"] {
+  --paper: #14151a;
+  --panel: #1b1d23;
+  --panel-2: #23262e;
+  --rule: #32363f;
+  --rule-soft: #272a32;
+  --ink: #e8e6e1;
+  --ink-2: #b0aca4;
+  --ink-3: #7e7a72;
+  --signal: #e06a5c;
+  --signal-ink: #14151a;
+  --shadow: none;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
 body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Noto Sans JP", sans-serif;
+  font-size: 15px;
+  line-height: 1.85;
+  font-feature-settings: "palt" 1;
 }
 
-header {
-    background: #0073e6; /* ブルーの背景色 */
-    color: #fff;
-    padding: 1rem 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.shell {
+  max-width: 1080px;
+  margin-inline: auto;
+  padding-inline: 24px;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 2.5rem;
-    text-align: center;
+.mono, .tag, .kind, dt, .foot-note {
+  font-family: "Azeret Mono", ui-monospace, "SFMono-Regular", monospace;
 }
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    text-align: center;
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
 }
 
-nav ul li {
-    display: inline;
-    margin: 0 1rem;
+/* ─ 表題部 ─────────────────────────────── */
+
+.masthead {
+  background: var(--panel);
+  border-bottom: 1px solid var(--rule);
+  padding-block: clamp(48px, 9vw, 92px) 0;
 }
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
+.tag {
+  margin: 0 0 18px;
+  font-size: 11px;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--ink-3);
 }
 
-.container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 1rem;
+.wordmark {
+  margin: 0;
+  font-size: clamp(44px, 11vw, 104px);
+  font-weight: 700;
+  letter-spacing: -.045em;
+  line-height: .9;
 }
 
-section {
-    background: #fff;
-    margin: 2rem 0;
-    padding: 1rem;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+.lede {
+  margin: 22px 0 0;
+  max-width: 52ch;
+  line-break: strict;
+  word-break: auto-phrase;
+  color: var(--ink-2);
+  font-size: clamp(15px, 1.7vw, 17px);
 }
 
-h2 {
-    border-bottom: 3px solid #0073e6; /* セクション見出しの下にブルーのボーダー */
-    padding-bottom: 0.5rem;
+.ident {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 0;
+  margin: 40px 0 0;
+  border-top: 1px solid var(--rule);
 }
 
-.skills-section {
-    border-left: 5px solid #0073e6;
-    padding-left: 1rem;
-    margin-bottom: 1rem;
+.ident > div {
+  padding: 14px 0 16px;
+  border-bottom: 1px solid var(--rule-soft);
 }
 
-.skills-section h3 {
-    margin-top: 0;
-    color: #0073e6; /* スキルセクションの見出しの色をブルーに */
+.ident dt {
+  font-size: 10.5px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
 }
 
-footer {
-    background: #333;
-    color: #fff;
-    text-align: center;
-    padding: 1rem 0;
-    margin-top: 1rem;
+.ident dd {
+  margin: 2px 0 0;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.jump {
+  display: flex;
+  gap: 24px;
+  padding-block: 26px 30px;
+}
+
+.jump a {
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  padding-bottom: 3px;
+  border-bottom: 2px solid transparent;
+  transition: border-color .18s ease, color .18s ease;
+}
+
+.jump a:hover { border-bottom-color: var(--signal); color: var(--signal); }
+
+/* 目盛り罫 */
+.scale {
+  height: 9px;
+  background-image:
+    linear-gradient(to right, var(--rule) 1px, transparent 1px);
+  background-size: 12px 100%;
+  background-position: left bottom;
+  border-top: 1px solid var(--rule);
+  opacity: .75;
+}
+
+/* ─ 波形の区切り ───────────────────────── */
+
+.waveform {
+  background: var(--paper);
+  padding-block: 26px 6px;
+  overflow: hidden;
+}
+
+.waveform svg {
+  display: block;
+  width: 100%;
+  height: 34px;
+}
+
+.waveform path {
+  fill: none;
+  stroke: var(--signal);
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+  opacity: .62;
+}
+
+/* ─ 本文ブロック ───────────────────────── */
+
+.block { padding-block: clamp(40px, 6vw, 72px) 0; }
+
+.block-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 28px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--ink);
+}
+
+.block-head h2 {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+
+.block-note {
+  margin: 0;
+  max-width: 42ch;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--ink-3);
+}
+
+/* プロジェクト */
+
+.entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 12px 48px;
+  padding-block: 30px;
+  border-bottom: 1px solid var(--rule-soft);
+  transition: background-color .2s ease;
+}
+
+.entry:hover { background: var(--panel); }
+
+.entry-main { min-width: 0; }
+
+.kind {
+  display: inline-block;
+  margin: 0 0 10px;
+  padding: 2px 9px;
+  font-size: 10.5px;
+  letter-spacing: .14em;
+  border: 1px solid var(--rule);
+  color: var(--ink-3);
+}
+
+.kind-work {
+  border-color: var(--signal);
+  background: var(--signal);
+  color: var(--signal-ink);
+}
+
+.entry h3 {
+  margin: 0 0 10px;
+  font-size: clamp(19px, 2.6vw, 25px);
+  font-weight: 700;
+  letter-spacing: -.02em;
+  line-height: 1.35;
+}
+
+.entry p:not(.kind) {
+  margin: 0;
+  color: var(--ink-2);
+  max-width: 46ch;
+  line-break: strict;
+  word-break: auto-phrase;
+}
+
+/* 仕様欄（点線リーダー付き） */
+
+.spec { margin: 0; align-self: start; }
+
+.spec > div {
+  display: grid;
+  grid-template-columns: 8.5em minmax(0, 1fr);
+  gap: 0 14px;
+  padding: 7px 0;
+  border-bottom: 1px dotted var(--rule);
+}
+
+.spec > div:first-child { border-top: 1px solid var(--rule); }
+
+.spec dt {
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  color: var(--ink-3);
+  padding-top: 3px;
+}
+
+.spec dd {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+/* スキル仕様表 */
+
+.sheet { margin: 0; }
+
+.sheet-row {
+  display: grid;
+  grid-template-columns: 15em minmax(0, 1fr);
+  gap: 4px 32px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.sheet-row:hover { background: var(--panel); }
+
+.sheet-row dt {
+  font-size: 11px;
+  letter-spacing: .12em;
+  color: var(--ink);
+  padding-top: 3px;
+  position: relative;
+  padding-left: 14px;
+}
+
+.sheet-row dt::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 6px;
+  height: 1px;
+  background: var(--signal);
+}
+
+.sheet-row dd {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: var(--ink-2);
+  overflow-wrap: anywhere;
+}
+
+/* ─ 脚部 ───────────────────────────────── */
+
+.foot {
+  margin-top: clamp(52px, 8vw, 88px);
+  border-top: 1px solid var(--rule);
+  background: var(--panel);
+}
+
+.foot-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px 24px;
+  padding-block: 26px 34px;
+}
+
+.foot-mark {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -.02em;
+}
+
+.foot-note {
+  margin: 0;
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  color: var(--ink-3);
+}
+
+/* ─ 読み込み時の立ち上がり ─────────────── */
+
+.masthead > .shell > *,
+.block {
+  animation: rise .5s cubic-bezier(.2, .7, .3, 1) both;
+}
+
+.tag { animation-delay: .02s; }
+.wordmark { animation-delay: .06s; }
+.lede { animation-delay: .12s; }
+.ident { animation-delay: .18s; }
+.jump { animation-delay: .24s; }
+#projects { animation-delay: .28s; }
+#skills { animation-delay: .32s; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(7px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ─ 狭い画面 ───────────────────────────── */
+
+@media (max-width: 720px) {
+  .entry, .sheet-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+  .spec > div { grid-template-columns: 7.5em minmax(0, 1fr); }
+  .sheet-row dt { padding-top: 0; }
+  .ident { grid-template-columns: minmax(0, 1fr); }
 }
