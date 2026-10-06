@@ -475,6 +475,13 @@ a { color: inherit; }
   padding-top: 3px;
 }
 
+.spec dd a {
+  text-decoration-color: var(--signal);
+  text-underline-offset: 3px;
+}
+
+.spec dd a:hover { color: var(--signal); }
+
 .spec dd {
   margin: 0;
   font-size: 14.5px;
@@ -584,6 +591,7 @@ a { color: inherit; }
 #career { animation-delay: .28s; }
 #contract { animation-delay: .32s; }
 #personal { animation-delay: .36s; }
+#talks { animation-delay: .38s; }
 #skills { animation-delay: .40s; }
 #contact { animation-delay: .44s; }
 
@@ -606,7 +614,8 @@ a { color: inherit; }
 }
 
 @media (max-width: 720px) {
-  .jump-inner { gap: 0 12px; }
+  .jump-inner { gap: 0 9px; }
+  .jump a { font-size: 13px; }
   .sheet-row {
     grid-template-columns: minmax(0, 1fr);
     gap: 14px;
@@ -621,6 +630,7 @@ a { color: inherit; }
   }
   .works { margin-top: 18px; }
   .works > li { padding-left: 18px; }
+  .works-flat > li { padding-left: 0; }
 
   .roster > li {
     grid-template-columns: minmax(0, 1fr);
