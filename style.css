@@ -177,19 +177,6 @@ a { color: inherit; }
 
 .jump a:hover { border-bottom-color: var(--signal); color: var(--signal); }
 
-.jump .jump-contact {
-  margin-left: auto;
-  min-height: 36px;
-  padding-inline: 14px;
-  border: 1px solid var(--signal);
-  color: var(--signal);
-}
-
-.jump .jump-contact:hover {
-  background: var(--signal);
-  color: var(--signal-ink);
-}
-
 /* 留めたナビの下に見出しが潜らないようにする */
 .block { scroll-margin-top: 64px; }
 
