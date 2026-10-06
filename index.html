@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shinya Saito — Portfolio</title>
-<meta name="description" content="Shinya Saito のポートフォリオ。バックエンド・インフラ・音声 AI を主戦場とするエンジニア。">
+<meta name="description" content="Shinya Saito のポートフォリオ。バックエンド・インフラ・音声 AI を主戦場とするエンジニアの経歴と手がけた案件。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
@@ -18,12 +18,14 @@
     <h1 class="wordmark">Shinya Saito</h1>
     <p class="lede">電話応対の自動化、対話シナリオの運用基盤、サイトの自動運用。<br>実際に動き続ける仕組みを、設計から運用まで一人で回せることを強みにしています。</p>
     <dl class="ident">
-      <div><dt>専門</dt><dd>バックエンド / インフラ / 音声 AI</dd></div>
+      <div><dt>専門</dt><dd>バックエンド / インフラ / 音声 AI / 広告・EC マーケティング</dd></div>
       <div><dt>主な言語</dt><dd>Python, TypeScript, Go, Kotlin</dd></div>
       <div><dt>クラウド</dt><dd>AWS, GCP, Azure, Cloudflare</dd></div>
     </dl>
     <nav class="jump">
-      <a href="#projects">プロジェクト</a>
+      <a href="#career">経歴</a>
+      <a href="#contract">業務委託</a>
+      <a href="#personal">個人開発</a>
       <a href="#skills">スキル</a>
     </nav>
   </div>
@@ -38,77 +40,262 @@
 
 <main class="shell">
 
-  <section id="projects" class="block">
+  <section id="career" class="block">
     <div class="block-head">
-      <h2>プロジェクト</h2>
-      <p class="block-note">継続して運用している主要なもの。顧客名と製品名は伏せています。</p>
+      <h2>経歴</h2>
+      <p class="block-note">本業として在籍した先と、そこで手がけた案件。一部の社名とサービス名は伏せています。</p>
     </div>
 
-    <article class="entry">
-      <div class="entry-main">
-        <p class="kind kind-work">業務</p>
-        <h3>音声 AI エージェント基盤</h3>
-        <p>電話応対を自動化する音声対話システム。リアルタイムの音声認識・応答生成・音声合成をつなぎ、通話制御から後処理までを一貫して扱います。複数テナントでの運用を前提に設計しました。</p>
-      </div>
-      <dl class="spec">
-        <div><dt>言語 / FW</dt><dd>Python, FastAPI</dd></div>
-        <div><dt>AI</dt><dd>Azure OpenAI Service (Realtime API), Whisper, Azure AI Speech</dd></div>
-        <div><dt>基盤</dt><dd>Azure Communication Services, PostgreSQL, Redis</dd></div>
-        <div><dt>可観測性</dt><dd>OpenTelemetry, structlog</dd></div>
-      </dl>
-    </article>
+    <ol class="track">
 
-    <article class="entry">
-      <div class="entry-main">
-        <p class="kind kind-work">業務</p>
-        <h3>対話シナリオの Code-First 運用基盤</h3>
-        <p>プロンプト・Function 定義・Q&amp;A といった対話シナリオを Git で一元管理し、レビューを経て配信する仕組み。専用 CLI と検証の自動化により、非エンジニアの編集も安全に反映できるようにしました。</p>
-      </div>
-      <dl class="spec">
-        <div><dt>言語 / FW</dt><dd>Python, Typer</dd></div>
-        <div><dt>検証</dt><dd>JSON Schema, pytest</dd></div>
-        <div><dt>配信</dt><dd>Docker, GitHub Actions</dd></div>
-      </dl>
-    </article>
+      <li class="stint">
+        <div class="stint-head">
+          <p class="span">2025 &mdash; 現在</p>
+          <h3>生成 AI プロダクトの事業会社</h3>
+          <p class="role">バックエンド・インフラ</p>
+        </div>
+        <div class="stint-body">
+          <p class="stint-lede">音声対話プロダクトの AI 機能と API、クラウド基盤を担当。</p>
 
-    <article class="entry">
-      <div class="entry-main">
-        <p class="kind kind-work">業務</p>
-        <h3>通話ログの分析基盤</h3>
-        <p>通話データを日次でデータウェアハウスへ集約し、指標をモデリングして可視化するパイプライン。品質チェックと異常時のアラートまでを含みます。</p>
-      </div>
-      <dl class="spec">
-        <div><dt>DWH</dt><dd>ClickHouse, BigQuery</dd></div>
-        <div><dt>変換 / 可視化</dt><dd>dbt, Metabase</dd></div>
-        <div><dt>実行基盤</dt><dd>Kubernetes, GitHub Actions</dd></div>
-      </dl>
-    </article>
+          <ol class="works">
+            <li class="entry">
+              <h4>音声 AI エージェント基盤</h4>
+              <p>電話応対を自動化する音声対話システム。通話制御から後処理まで。</p>
+              <dl class="spec">
+                <div><dt>言語 / FW</dt><dd>Python, FastAPI</dd></div>
+                <div><dt>AI</dt><dd>Azure OpenAI Service (Realtime API), Whisper, Azure AI Speech</dd></div>
+                <div><dt>基盤</dt><dd>Azure Communication Services, PostgreSQL, Redis</dd></div>
+                <div><dt>可観測性</dt><dd>OpenTelemetry, structlog</dd></div>
+              </dl>
+            </li>
 
-    <article class="entry">
-      <div class="entry-main">
-        <p class="kind kind-personal">個人</p>
+            <li class="entry">
+              <h4>対話シナリオの Code-First 運用基盤</h4>
+              <p>プロンプトや Function 定義を Git で管理し、検証を経て配信する仕組み。</p>
+              <dl class="spec">
+                <div><dt>言語 / FW</dt><dd>Python, Typer</dd></div>
+                <div><dt>検証</dt><dd>JSON Schema, pytest</dd></div>
+                <div><dt>配信</dt><dd>Docker, GitHub Actions</dd></div>
+              </dl>
+            </li>
+
+            <li class="entry">
+              <h4>通話ログの分析基盤</h4>
+              <p>通話データを日次で DWH へ集約し、指標を可視化するパイプライン。</p>
+              <dl class="spec">
+                <div><dt>DWH</dt><dd>ClickHouse, BigQuery</dd></div>
+                <div><dt>変換 / 可視化</dt><dd>dbt, Metabase</dd></div>
+                <div><dt>実行基盤</dt><dd>Kubernetes, GitHub Actions</dd></div>
+              </dl>
+            </li>
+          </ol>
+        </div>
+      </li>
+
+      <li class="stint">
+        <div class="stint-head">
+          <p class="span">2020 &mdash; 2025</p>
+          <h3>サイバーエージェント</h3>
+          <p class="role">バックエンド</p>
+        </div>
+        <div class="stint-body">
+          <p class="stint-lede">広告配信システムの開発・運用。大規模トラフィックを前提とした改善。</p>
+
+          <ol class="works">
+            <li class="entry">
+              <h4>生成 AI を活用した業務効率化</h4>
+              <p>生成 AI で社内業務を効率化するアプリケーションを設計・実装。</p>
+              <dl class="spec">
+                <div><dt>言語 / FW</dt><dd>Python, Node.js, TypeScript (Remix)</dd></div>
+                <div><dt>AI</dt><dd>Azure OpenAI Service, Amazon Bedrock, LangChain / LangServe / LangSmith, Dify</dd></div>
+                <div><dt>基盤</dt><dd>AWS Lambda, AppRunner, DynamoDB, S3, VPC Endpoint, Terraform</dd></div>
+              </dl>
+            </li>
+
+            <li class="entry">
+              <h4>DSP 開発</h4>
+              <p>広告の配信プラットフォームを新規開発。入札ロジックの設計・実装。</p>
+              <dl class="spec">
+                <div><dt>言語 / FW</dt><dd>Go, TypeScript (Next.js, NestJS)</dd></div>
+                <div><dt>基盤</dt><dd>AWS ECS / Lambda / Step Functions, Aurora MySQL, ElastiCache (Memcached), DynamoDB</dd></div>
+                <div><dt>データ</dt><dd>Snowflake, dbt, Amazon Athena</dd></div>
+                <div><dt>運用</dt><dd>Terraform, Datadog</dd></div>
+              </dl>
+            </li>
+
+            <li class="entry">
+              <h4>広告配信ロジックの改善</h4>
+              <p>ハイトラフィック・低レイテンシの配信システムの開発と運用、リプレイス。</p>
+              <dl class="spec">
+                <div><dt>言語</dt><dd>Java, Go, Scala</dd></div>
+                <div><dt>基盤</dt><dd>AWS Lambda / Step Functions / ECS, Aurora MySQL, ElastiCache (Memcached), DynamoDB, Athena, Redis</dd></div>
+                <div><dt>運用</dt><dd>Terraform, Datadog</dd></div>
+              </dl>
+            </li>
+          </ol>
+        </div>
+      </li>
+
+      <li class="stint">
+        <div class="stint-head">
+          <p class="span">2016 &mdash; 2020</p>
+          <h3>Web マーケティング支援企業</h3>
+          <p class="role">Web・サーバ</p>
+        </div>
+        <div class="stint-body">
+          <p class="stint-lede">Web サイト構築と CMS 運用から、自社プロダクトの基盤刷新とデータ活用まで。</p>
+
+          <ol class="works">
+            <li class="entry">
+              <h4>広告データを活用した機械学習</h4>
+              <p>広告データから特徴量を生成し、運用の自動化に向けてモデルを改善。</p>
+              <dl class="spec">
+                <div><dt>分析</dt><dd>BigQuery, SQL, Python, 機械学習</dd></div>
+                <div><dt>基盤</dt><dd>Google Cloud, Stackdriver</dd></div>
+              </dl>
+            </li>
+
+            <li class="entry">
+              <h4>レガシーシステムのモダナイゼーション</h4>
+              <p>レガシーシステムのコンテナ化と、監視・CI/CD を含む実行基盤の刷新。</p>
+              <dl class="spec">
+                <div><dt>言語</dt><dd>PHP, Node.js</dd></div>
+                <div><dt>基盤</dt><dd>Google Cloud, GKE, Kubernetes, Docker, Helm, Nginx, Cloud SQL, Redis</dd></div>
+                <div><dt>CI / CD</dt><dd>Cloud Build, GitHub Checks, Deployment Manager</dd></div>
+                <div><dt>監視</dt><dd>Prometheus, Grafana, Fluentd, BigQuery</dd></div>
+              </dl>
+            </li>
+
+            <li class="entry">
+              <h4>マーケティングオートメーションツールの開発</h4>
+              <p>EC のデータを基に、分析とメール・LINE のシナリオ配信を行う自社ツール。</p>
+              <dl class="spec">
+                <div><dt>言語 / FW</dt><dd>PHP (FuelPHP), AngularJS, jQuery</dd></div>
+                <div><dt>配信</dt><dd>Amazon SES / SQS / DynamoDB</dd></div>
+                <div><dt>基盤</dt><dd>Google Cloud, Cloud SQL, BigQuery, Redis, Nginx, CloudFormation</dd></div>
+              </dl>
+            </li>
+          </ol>
+        </div>
+      </li>
+
+    </ol>
+  </section>
+
+  <section id="contract" class="block">
+    <div class="block-head">
+      <h2>業務委託</h2>
+      <p class="block-note">副業・業務委託として参画したもの。発注元とサービス名は伏せています。</p>
+    </div>
+
+    <ol class="roster">
+      <li>
+        <p class="idx">01</p>
+        <div class="roster-main">
+          <h3>画像生成 AI の素材配信サービス</h3>
+          <p>テキストから画像を生成し、ストック素材として配布する会員制サービス。バックエンドとインフラを担当。</p>
+        </div>
+      </li>
+      <li>
+        <p class="idx">02</p>
+        <div class="roster-main">
+          <h3>ライター向け AI エディタ</h3>
+          <p>出版物の執筆を支援するエディタ。AI による下書きと推敲の機能を実装。</p>
+        </div>
+      </li>
+      <li>
+        <p class="idx">03</p>
+        <div class="roster-main">
+          <h3>インバウンド向けのレストラン予約サービス</h3>
+          <p>訪日外国人を対象とした飲食店の予約サービスを開発。</p>
+        </div>
+      </li>
+      <li>
+        <p class="idx">04</p>
+        <div class="roster-main">
+          <h3>営業のフォーム入力作業の自動化</h3>
+          <p>生成 AI を用いて、問い合わせフォームへの入力作業を自動化。</p>
+        </div>
+      </li>
+      <li>
+        <p class="idx">05</p>
+        <div class="roster-main">
+          <h3>美容室の予約管理システム</h3>
+          <p>来店予約と顧客情報を扱う管理システムを構築。</p>
+        </div>
+      </li>
+      <li>
+        <p class="idx">06</p>
+        <div class="roster-main">
+          <h3>マニュアル管理システム</h3>
+          <p>業務マニュアルの作成・配布・版管理を行う基盤を構築。</p>
+        </div>
+      </li>
+      <li>
+        <p class="idx">07</p>
+        <div class="roster-main">
+          <h3>Salesforce へのデータインポート自動化</h3>
+          <p>営業支援システムへのデータ取り込みを自動化。</p>
+        </div>
+      </li>
+      <li>
+        <p class="idx">08</p>
+        <div class="roster-main">
+          <h3>動画配信基盤の動画解析システム</h3>
+          <p>大規模な動画配信プラットフォーム向けに、動画を解析する仕組みを構築。</p>
+        </div>
+      </li>
+      <li>
+        <p class="idx">09</p>
+        <div class="roster-main">
+          <h3>コンテンツ管理システムの CI/CD 環境構築</h3>
+          <p>Terraform による IaC 化と、GitOps によるデプロイ基盤への移行。</p>
+        </div>
+      </li>
+      <li>
+        <p class="idx">10</p>
+        <div class="roster-main">
+          <h3>業務委託メンバーの管理システム</h3>
+          <p>契約と稼働の情報を扱う管理システムを Google Apps Script で構築。</p>
+        </div>
+      </li>
+      <li>
+        <p class="idx">11</p>
+        <div class="roster-main">
+          <h3>フィンテックスタートアップでのアプリ立ち上げ</h3>
+          <p>個人間で金銭を贈れるサービスの立ち上げに参画。</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section id="personal" class="block">
+    <div class="block-head">
+      <h2>個人開発</h2>
+      <p class="block-note">個人で作り、いまも動かし続けているもの。</p>
+    </div>
+
+    <ol class="works works-flat">
+      <li class="entry">
         <h3>サイト自動運用基盤</h3>
-        <p>商品カタログの収集から記事の自動生成・投稿、価格追跡までを自動化した個人開発の基盤。エッジ環境で動く複数のサイトとバッチ処理を、単一のデータベースで運用しています。</p>
-      </div>
-      <dl class="spec">
-        <div><dt>言語 / FW</dt><dd>TypeScript, Next.js (OpenNext)</dd></div>
-        <div><dt>実行基盤</dt><dd>Cloudflare Workers / R2 / Queues</dd></div>
-        <div><dt>データ</dt><dd>Supabase (PostgreSQL)</dd></div>
-        <div><dt>連携</dt><dd>WordPress REST API</dd></div>
-      </dl>
-    </article>
+        <p>記事の自動生成・投稿から価格追跡までを自動化した、複数サイトの運用基盤。</p>
+        <dl class="spec">
+          <div><dt>言語 / FW</dt><dd>TypeScript, Next.js (OpenNext)</dd></div>
+          <div><dt>実行基盤</dt><dd>Cloudflare Workers / R2 / Queues</dd></div>
+          <div><dt>データ</dt><dd>Supabase (PostgreSQL)</dd></div>
+          <div><dt>連携</dt><dd>WordPress REST API</dd></div>
+        </dl>
+      </li>
 
-    <article class="entry">
-      <div class="entry-main">
-        <p class="kind kind-personal">個人</p>
+      <li class="entry">
         <h3>音声合成・ボイスチャット</h3>
-        <p>音声合成モデルを用いた読み上げと、リアルタイム音声のやり取りを試作。推論の高速化と遅延の削減を中心に検証しました。</p>
-      </div>
-      <dl class="spec">
-        <div><dt>推論</dt><dd>Python, PyTorch, Style-Bert-VITS2</dd></div>
-        <div><dt>配信</dt><dd>WebSocket, Next.js</dd></div>
-      </dl>
-    </article>
+        <p>音声合成による読み上げと、リアルタイム音声のやり取りを試作。</p>
+        <dl class="spec">
+          <div><dt>推論</dt><dd>Python, PyTorch, Style-Bert-VITS2</dd></div>
+          <div><dt>配信</dt><dd>WebSocket, Next.js</dd></div>
+        </dl>
+      </li>
+    </ol>
   </section>
 
   <section id="skills" class="block">
@@ -124,7 +311,7 @@
       </div>
       <div class="sheet-row">
         <dt>プログラミング言語</dt>
-        <dd>Go, Java, Kotlin, PHP, Python, Node.js, TypeScript</dd>
+        <dd>Go, Java, Kotlin, PHP, Python, Node.js, TypeScript, Scala</dd>
       </div>
       <div class="sheet-row">
         <dt>バックエンド</dt>
@@ -144,11 +331,11 @@
       </div>
       <div class="sheet-row">
         <dt>AI / LLM</dt>
-        <dd>OpenAI (Realtime API, Whisper), Azure OpenAI Service, Anthropic Claude, Gemini, LangChain, pgvector</dd>
+        <dd>OpenAI (Realtime API, Whisper), Azure OpenAI Service, Amazon Bedrock, Anthropic Claude, Gemini, LangChain / LangServe / LangSmith, Dify, pgvector</dd>
       </div>
       <div class="sheet-row">
         <dt>データ基盤</dt>
-        <dd>dbt, BigQuery, ClickHouse, Metabase</dd>
+        <dd>dbt, BigQuery, ClickHouse, Snowflake, Metabase</dd>
       </div>
       <div class="sheet-row">
         <dt>AWS</dt>

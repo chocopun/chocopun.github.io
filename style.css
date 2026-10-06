@@ -65,7 +65,7 @@ body {
   padding-inline: 24px;
 }
 
-.mono, .tag, .kind, dt, .foot-note {
+.mono, .tag, .span, .role, .idx, dt, .foot-note {
   font-family: "Azeret Mono", ui-monospace, "SFMono-Regular", monospace;
 }
 
@@ -137,7 +137,8 @@ a { color: inherit; }
 
 .jump {
   display: flex;
-  gap: 24px;
+  flex-wrap: wrap;
+  gap: 10px 24px;
   padding-block: 26px 30px;
 }
 
@@ -213,49 +214,176 @@ a { color: inherit; }
   color: var(--ink-3);
 }
 
-/* プロジェクト */
+/* 案件。スキルを拾えることを優先し、説明は1行・技術一覧を横いっぱいに置く */
 
 .entry {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-  gap: 12px 48px;
-  padding-block: 30px;
+  padding-block: 24px;
   border-bottom: 1px solid var(--rule-soft);
   transition: background-color .2s ease;
 }
 
 .entry:hover { background: var(--panel); }
 
-.entry-main { min-width: 0; }
+.entry h3,
+.entry h4 {
+  margin: 0;
+  font-size: clamp(18px, 2.2vw, 21px);
+  font-weight: 700;
+  letter-spacing: -.02em;
+  line-height: 1.4;
+}
 
-.kind {
-  display: inline-block;
-  margin: 0 0 10px;
-  padding: 2px 9px;
-  font-size: 10.5px;
-  letter-spacing: .14em;
-  border: 1px solid var(--rule);
+.entry p {
+  margin: 5px 0 14px;
+  color: var(--ink-2);
+  font-size: 13.5px;
+  line-height: 1.75;
+  max-width: 60ch;
+  line-break: strict;
+  word-break: auto-phrase;
+}
+
+/* 経歴（在籍の帯） */
+
+.track, .works, .roster {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.stint {
+  display: grid;
+  grid-template-columns: 13em minmax(0, 1fr);
+  gap: 16px 40px;
+  padding-block: 34px;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.stint-head {
+  align-self: start;
+  position: relative;
+  padding-left: 16px;
+}
+
+/* 在籍の目盛り。現職だけ太くして現在地を示す */
+.stint-head::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 8px;
+  height: 1px;
+  background: var(--signal);
+}
+
+.track > li:first-child .stint-head::before {
+  height: 3px;
+  top: 8px;
+}
+
+.span {
+  margin: 0;
+  font-size: 11.5px;
+  letter-spacing: .1em;
   color: var(--ink-3);
 }
 
-.kind-work {
-  border-color: var(--signal);
-  background: var(--signal);
-  color: var(--signal-ink);
-}
-
-.entry h3 {
-  margin: 0 0 10px;
-  font-size: clamp(19px, 2.6vw, 25px);
+.stint-head h3 {
+  margin: 7px 0 0;
+  font-size: 16px;
   font-weight: 700;
-  letter-spacing: -.02em;
-  line-height: 1.35;
+  letter-spacing: -.01em;
+  line-height: 1.5;
+  line-break: strict;
+  word-break: auto-phrase;
 }
 
-.entry p:not(.kind) {
+.role {
+  margin: 5px 0 0;
+  font-size: 10.5px;
+  letter-spacing: .12em;
+  color: var(--ink-3);
+}
+
+.stint-body { min-width: 0; }
+
+.stint-lede {
   margin: 0;
+  max-width: 48ch;
   color: var(--ink-2);
-  max-width: 46ch;
+  line-break: strict;
+  word-break: auto-phrase;
+}
+
+/* 在籍にぶら下がる案件 */
+
+.works {
+  margin-top: 22px;
+  border-left: 1px solid var(--rule);
+}
+
+.works > li { padding-left: 26px; }
+
+.works > li:last-child.entry {
+  border-bottom: none;
+  padding-bottom: 4px;
+}
+
+/* 個人開発は在籍にぶら下がらないので縦罫と字下げを外す */
+.works-flat {
+  margin-top: 0;
+  border-left: none;
+}
+
+.works-flat > li { padding-left: 0; }
+
+/* 業務委託の名簿。件数の多さが一目で伝わるよう2列に組む */
+
+.roster {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 48px;
+}
+
+.roster > li {
+  display: grid;
+  grid-template-columns: 3.5em minmax(0, 1fr);
+  gap: 0 24px;
+  padding: 18px 0 18px 12px;
+  border-left: 2px solid transparent;
+  border-bottom: 1px solid var(--rule-soft);
+  transition: background-color .2s ease, border-color .2s ease;
+}
+
+.roster > li:hover {
+  background: var(--panel);
+  border-left-color: var(--signal);
+}
+
+.idx {
+  margin: 0;
+  padding-top: 4px;
+  font-size: 11px;
+  letter-spacing: .1em;
+  color: var(--ink-3);
+}
+
+.roster-main { min-width: 0; }
+
+.roster h3 {
+  margin: 0;
+  font-size: 15.5px;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  line-height: 1.5;
+}
+
+.roster p {
+  margin: 4px 0 0;
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: var(--ink-2);
+  max-width: 56ch;
   line-break: strict;
   word-break: auto-phrase;
 }
@@ -372,8 +500,10 @@ a { color: inherit; }
 .lede { animation-delay: .12s; }
 .ident { animation-delay: .18s; }
 .jump { animation-delay: .24s; }
-#projects { animation-delay: .28s; }
-#skills { animation-delay: .32s; }
+#career { animation-delay: .28s; }
+#contract { animation-delay: .32s; }
+#personal { animation-delay: .36s; }
+#skills { animation-delay: .40s; }
 
 @keyframes rise {
   from { opacity: 0; transform: translateY(7px); }
@@ -389,12 +519,29 @@ a { color: inherit; }
 
 /* ─ 狭い画面 ───────────────────────────── */
 
+@media (max-width: 860px) {
+  .roster { grid-template-columns: minmax(0, 1fr); }
+}
+
 @media (max-width: 720px) {
-  .entry, .sheet-row {
+  .sheet-row {
     grid-template-columns: minmax(0, 1fr);
     gap: 14px;
   }
   .spec > div { grid-template-columns: 7.5em minmax(0, 1fr); }
   .sheet-row dt { padding-top: 0; }
   .ident { grid-template-columns: minmax(0, 1fr); }
+
+  .stint {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+  .works { margin-top: 18px; }
+  .works > li { padding-left: 18px; }
+
+  .roster > li {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 6px;
+  }
+  .idx { padding-top: 0; }
 }
