@@ -9,7 +9,7 @@
   --rule-soft: #ddd9d1;
   --ink: #161513;
   --ink-2: #4b4842;
-  --ink-3: #78746b;
+  --ink-3: #67635b;
   --signal: #b3372c;
   --signal-ink: #ffffff;
   --shadow: 0 1px 0 rgba(22, 21, 19, .04);
@@ -24,7 +24,7 @@
     --rule-soft: #272a32;
     --ink: #e8e6e1;
     --ink-2: #b0aca4;
-    --ink-3: #7e7a72;
+    --ink-3: #95918a;
     --signal: #e06a5c;
     --signal-ink: #14151a;
     --shadow: none;
@@ -39,7 +39,7 @@
   --rule-soft: #272a32;
   --ink: #e8e6e1;
   --ink-2: #b0aca4;
-  --ink-3: #7e7a72;
+  --ink-3: #95918a;
   --signal: #e06a5c;
   --signal-ink: #14151a;
   --shadow: none;
@@ -54,7 +54,7 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Noto Sans JP", sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.85;
   font-feature-settings: "palt" 1;
 }
@@ -82,15 +82,18 @@ a { color: inherit; }
   background: var(--panel);
   border-bottom: 1px solid var(--rule);
   padding-block: clamp(48px, 9vw, 92px) 0;
+  border-bottom: none;
 }
 
 .tag {
   margin: 0 0 18px;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: .26em;
   text-transform: uppercase;
   color: var(--ink-3);
 }
+
+.tag span { white-space: nowrap; }
 
 .wordmark {
   margin: 0;
@@ -122,8 +125,10 @@ a { color: inherit; }
   border-bottom: 1px solid var(--rule-soft);
 }
 
+.ident { margin-bottom: 0; }
+
 .ident dt {
-  font-size: 10.5px;
+  font-size: 12px;
   letter-spacing: .18em;
   text-transform: uppercase;
   color: var(--ink-3);
@@ -131,36 +136,71 @@ a { color: inherit; }
 
 .ident dd {
   margin: 2px 0 0;
-  font-size: 14px;
+  font-size: 15px;
   color: var(--ink);
+  /* 「広告」の途中など語の中で折れないよう、区切りの空白でだけ改行する */
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 
+/* ページ内ナビ。長いページのどこからでも各節と連絡先へ飛べるよう上端に留める */
 .jump {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 24px;
-  padding-block: 26px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--panel);
+  border-bottom: 1px solid var(--rule);
 }
+
+.jump-inner {
+  display: flex;
+  align-items: center;
+  gap: 0 24px;
+  padding-block: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.jump-inner::-webkit-scrollbar { display: none; }
 
 .jump a {
-  font-size: 13px;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 14px;
   font-weight: 500;
   text-decoration: none;
-  padding-bottom: 3px;
   border-bottom: 2px solid transparent;
   transition: border-color .18s ease, color .18s ease;
 }
 
 .jump a:hover { border-bottom-color: var(--signal); color: var(--signal); }
 
+.jump .jump-contact {
+  margin-left: auto;
+  min-height: 36px;
+  padding-inline: 14px;
+  border: 1px solid var(--signal);
+  color: var(--signal);
+}
+
+.jump .jump-contact:hover {
+  background: var(--signal);
+  color: var(--signal-ink);
+}
+
+/* 留めたナビの下に見出しが潜らないようにする */
+.block { scroll-margin-top: 64px; }
+
 /* 目盛り罫 */
 .scale {
   height: 9px;
+  background-color: var(--panel);
   background-image:
     linear-gradient(to right, var(--rule) 1px, transparent 1px);
   background-size: 12px 100%;
   background-position: left bottom;
-  border-top: 1px solid var(--rule);
   opacity: .75;
 }
 
@@ -209,7 +249,7 @@ a { color: inherit; }
 .block-note {
   margin: 0;
   max-width: 42ch;
-  font-size: 12.5px;
+  font-size: 13.5px;
   line-height: 1.7;
   color: var(--ink-3);
 }
@@ -236,7 +276,7 @@ a { color: inherit; }
 .entry p {
   margin: 5px 0 14px;
   color: var(--ink-2);
-  font-size: 13.5px;
+  font-size: 14.5px;
   line-height: 1.75;
   max-width: 60ch;
   line-break: strict;
@@ -283,7 +323,7 @@ a { color: inherit; }
 
 .span {
   margin: 0;
-  font-size: 11.5px;
+  font-size: 12px;
   letter-spacing: .1em;
   color: var(--ink-3);
 }
@@ -300,7 +340,7 @@ a { color: inherit; }
 
 .role {
   margin: 5px 0 0;
-  font-size: 10.5px;
+  font-size: 12px;
   letter-spacing: .12em;
   color: var(--ink-3);
 }
@@ -363,7 +403,7 @@ a { color: inherit; }
 .idx {
   margin: 0;
   padding-top: 4px;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: .1em;
   color: var(--ink-3);
 }
@@ -380,7 +420,7 @@ a { color: inherit; }
 
 .roster p {
   margin: 4px 0 0;
-  font-size: 13.5px;
+  font-size: 14.5px;
   line-height: 1.75;
   color: var(--ink-2);
   max-width: 56ch;
@@ -403,7 +443,7 @@ a { color: inherit; }
 .spec > div:first-child { border-top: 1px solid var(--rule); }
 
 .spec dt {
-  font-size: 10.5px;
+  font-size: 12px;
   letter-spacing: .1em;
   color: var(--ink-3);
   padding-top: 3px;
@@ -411,7 +451,7 @@ a { color: inherit; }
 
 .spec dd {
   margin: 0;
-  font-size: 13.5px;
+  font-size: 14.5px;
   line-height: 1.6;
   overflow-wrap: anywhere;
 }
@@ -431,7 +471,7 @@ a { color: inherit; }
 .sheet-row:hover { background: var(--panel); }
 
 .sheet-row dt {
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: .12em;
   color: var(--ink);
   padding-top: 3px;
@@ -451,11 +491,31 @@ a { color: inherit; }
 
 .sheet-row dd {
   margin: 0;
-  font-size: 13.5px;
+  font-size: 14.5px;
   line-height: 1.75;
   color: var(--ink-2);
   overflow-wrap: anywhere;
 }
+
+/* ─ 連絡先 ───────────────────────────── */
+
+.contact { margin: 28px 0 0; }
+
+.contact-mail {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: "Azeret Mono", ui-monospace, "SFMono-Regular", monospace;
+  font-size: clamp(18px, 3.2vw, 28px);
+  font-weight: 500;
+  letter-spacing: -.01em;
+  text-decoration: none;
+  border-bottom: 2px solid var(--signal);
+  overflow-wrap: anywhere;
+  transition: color .18s ease;
+}
+
+.contact-mail:hover { color: var(--signal); }
 
 /* ─ 脚部 ───────────────────────────────── */
 
@@ -483,7 +543,7 @@ a { color: inherit; }
 
 .foot-note {
   margin: 0;
-  font-size: 10.5px;
+  font-size: 12px;
   letter-spacing: .1em;
   color: var(--ink-3);
 }
@@ -499,11 +559,12 @@ a { color: inherit; }
 .wordmark { animation-delay: .06s; }
 .lede { animation-delay: .12s; }
 .ident { animation-delay: .18s; }
-.jump { animation-delay: .24s; }
+.jump-inner { animation: rise .5s cubic-bezier(.2, .7, .3, 1) .24s both; }
 #career { animation-delay: .28s; }
 #contract { animation-delay: .32s; }
 #personal { animation-delay: .36s; }
 #skills { animation-delay: .40s; }
+#contact { animation-delay: .44s; }
 
 @keyframes rise {
   from { opacity: 0; transform: translateY(7px); }
@@ -524,6 +585,7 @@ a { color: inherit; }
 }
 
 @media (max-width: 720px) {
+  .jump-inner { gap: 0 18px; }
   .sheet-row {
     grid-template-columns: minmax(0, 1fr);
     gap: 14px;
