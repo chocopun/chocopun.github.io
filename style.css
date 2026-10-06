@@ -177,6 +177,45 @@ a { color: inherit; }
 
 .jump a:hover { border-bottom-color: var(--signal); color: var(--signal); }
 
+/* テーマ切り替え。表示中のテーマの反対側のアイコンを出す */
+.theme-toggle {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-left: auto;
+  margin-right: -10px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: color .18s ease;
+}
+
+.theme-toggle:hover { color: var(--signal); }
+
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.theme-toggle .i-sun { display: none; }
+
+:root[data-theme="dark"] .theme-toggle .i-sun { display: block; }
+:root[data-theme="dark"] .theme-toggle .i-moon { display: none; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .i-sun { display: block; }
+  :root:not([data-theme="light"]) .theme-toggle .i-moon { display: none; }
+}
+
 /* 留めたナビの下に見出しが潜らないようにする */
 .block { scroll-margin-top: 64px; }
 
@@ -567,7 +606,7 @@ a { color: inherit; }
 }
 
 @media (max-width: 720px) {
-  .jump-inner { gap: 0 18px; }
+  .jump-inner { gap: 0 12px; }
   .sheet-row {
     grid-template-columns: minmax(0, 1fr);
     gap: 14px;
